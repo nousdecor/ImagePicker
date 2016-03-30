@@ -3,8 +3,8 @@ import MediaPlayer
 
 public protocol ImagePickerDelegate: class {
 
-  func wrapperDidPress(images: [UIImage])
-  func doneButtonDidPress(images: [UIImage])
+  func wrapperDidPress(images: [PHAsset])
+  func doneButtonDidPress(images: [PHAsset])
   func cancelButtonDidPress()
 }
 
@@ -265,8 +265,7 @@ extension ImagePickerController: BottomContainerViewDelegate {
   }
 
   func doneButtonDidPress() {
-    let images = ImagePicker.resolveAssets(stack.assets)
-    delegate?.doneButtonDidPress(images)
+    delegate?.doneButtonDidPress(stack.assets)
   }
 
   func cancelButtonDidPress() {
@@ -275,8 +274,7 @@ extension ImagePickerController: BottomContainerViewDelegate {
   }
 
   func imageStackViewDidPress() {
-    let images = ImagePicker.resolveAssets(stack.assets)
-    delegate?.wrapperDidPress(images)
+    delegate?.wrapperDidPress(stack.assets)
   }
 }
 
